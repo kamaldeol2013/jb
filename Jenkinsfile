@@ -9,7 +9,7 @@ pipeline {
         }
         stage("Deploy") {
             steps {
-                sh "sshpass -p "jenkins" rsync -avghe ssh /var/lib/jenkins/workspace/pipeline/build/ jenkins@192.168.101.11:/var/www/html/"
+                sh "sshpass -p 'jenkins' rsync -avghe ssh /var/lib/jenkins/workspace/pipeline/build/ jenkins@192.168.101.11:/var/www/html/"
             }
         }
     }
