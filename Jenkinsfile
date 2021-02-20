@@ -5,11 +5,12 @@ pipeline {
             steps {
                 sh "sudo npm install"
                 sh "sudo npm run build"
+                sh ""
             }
         }
         stage("Deploy") {
             steps {
-                sh "sshpass -p 'jenkins' rsync -avgheO ssh /var/lib/jenkins/workspace/pipeline/build/ jenkins@192.168.101.11:/var/www/html/"
+                sh "sshpass -p 'jenkins' rsync -zqxhe ssh /var/lib/jenkins/workspace/pipeline/build/ jenkins@192.168.101.11:/var/www/html/"
             }
         }
     }
